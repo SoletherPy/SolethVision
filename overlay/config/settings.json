@@ -1,0 +1,8 @@
+{
+  "model_weights": "../shared/models/fingerprint_cnn_enhanced_best.pt",
+  "roi_file": "./config/ROIs/fingerprint_rois.json",
+  "fps_folder": "../shared/fps",
+  "detection_key": "f",
+  "clear_key": "c",
+  "quit_key": "q"
+}
