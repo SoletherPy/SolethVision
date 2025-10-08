@@ -27,7 +27,7 @@ This project is a **sophisticated computer vision system** designed to solve GTA
 
 ### Option 2: Web Interface (Testing & Development)
 1. Clone this repository
-2. Install dependencies: `pip install -r requirements.txt`
+2. Install dependencies: `pip install -r requirementsCPU.txt` (**CPU**) or `pip install -r requirementsGPU.txt` (**CUDA**)
 3. Run the Flask app: `python webapp/app.py`
 4. Open [http://localhost:5000](http://localhost:5000)
 5. Upload fingerprint images for classification
@@ -53,7 +53,8 @@ project_root/
 ├── 📁 webapp/                   # Flask web interface
 │   ├── 📁 uploads/             # Users pictures
 │   └── 📄 app.py              # Flask web application
-└── 📄 requirements.txt        # Python dependencies
+├── 📄 requirementsCPU.txt       # Python dependencies (CPU)
+└── 📄 requirementsGPU.txt       # Python dependencies (GPU)
 ```
 ---
 ## 🧠 Technical Overview
@@ -101,10 +102,9 @@ cd SolethVision
 ```
 ### Step 2: Install Dependencies
 ```bash
-# Install all dependencies (CUDA-enabled wheels included in requirements.txt)
-pip install -r requirements.txt
+# Install all dependencies (CUDA-enabled wheels included in requirementsGPU.txt)
+pip install -r requirementsCPU.txt **OR** pip install -r requirementsGPU.txt
 
-> **Note:** If your device has a CUDA-compatible GPU and drivers installed, PyTorch will automatically install the appropriate CUDA-enabled wheels via the extra index url (`--extra-index-url https://download.pytorch.org/whl/cu129`) in `requirements.txt`. No need for manual pip flags!
 > Use `python -c "import torch; print(torch.cuda.is_available())"` to check if CUDA is available on your system before training or running with GPU acceleration.
 
 ```
@@ -136,12 +136,12 @@ Distribute the entire `SolethVision` folder with all its contents for correct op
 - `--contents-directory "."` → Puts all data next to the exe
 - `--add-data` → Bundles code, configs, models, references
 
-> **Note:** The build may take several minutes and the output folder will be much bigger than your source due to PyTorch and dependencies.
+> **Note:** The CUDA build may take several minutes and the output folder will be much bigger than your source due to PyTorch and dependencies.
 ---
 ## 🎮 Usage Guide
 ### **In-Game Overlay Mode**
 1. **Launch GTA V** — Set your display mode to fullscreen or borderless. (Windowed mode is not officially supported, but you can calibrate your own solution ROIs via `roi.py` if needed.)
-2. **Run the overlay:** `python overlay/overlay.py` or use the compiled `overlay.exe`
+2. **Run the overlay:** `python overlay/overlay.py` or use the compiled `SolethVision.exe`
 3. **Start the minigame** — Press your detection key ("F" by default) to begin detection.
 4. **Watch the magic** — The system solves puzzles almost instantly. _(Tip: First launch may take a bit longer; for fastest detection, press "F" once before entering the minigame.)_
 
